@@ -33,7 +33,7 @@
           <div class="d-flex justify-content-center my-4">
             <div class="thermometer">
               <div class="level" 
-                   [style.height.%]="temperature"
+                   [style.height.%]="calculateThermometerHeight(temperature)"
                    [style.background-color]="getThermometerColor(temperature)">
               </div>
             </div>
