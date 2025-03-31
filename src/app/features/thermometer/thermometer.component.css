@@ -1,0 +1,17 @@
+.thermometer {
+  width: 40px;
+  height: 200px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  position: relative;
+  background-color: #f9f9f9;
+}
+
+.level {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: height 0.3s ease;
+}

@@ -1,0 +1,75 @@
+<div class="min-vh-100 d-flex flex-column" style="background: linear-gradient(to bottom, #ebf7ff, #d1ebff);">
+  <header class="container py-4">
+    <h1 class="text-center">Temperature Visualizer</h1>
+  </header>
+
+  <div class="container pb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="col-6 col-md-3">
+        <label for="citySelect" class="form-label fw-bold">City</label>
+        <select
+          id="citySelect"
+          class="form-select"
+          (change)="onCityChange($event)"
+        >
+          <option *ngFor="let city of cities" [value]="city.name">
+            {{ city.name }}, {{ city.countryCode }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <button class="btn btn-dark" (click)="fetchWeather()">Refresh</button>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-5">
+        <div class="card shadow-sm p-4 h-100">
+          <h2 class="fw-semibold">
+            {{ selectedCity.name }}, {{ selectedCity.countryCode }}
+          </h2>
+          <p class="text-secondary">{{ weatherDescription }}</p>
+
+          <div class="d-flex justify-content-center my-4">
+            <div class="thermometer">
+              <div class="level" 
+                   [style.height.%]="temperature"
+                   [style.background-color]="getThermometerColor(temperature)">
+              </div>
+            </div>
+          </div>
+
+          <h3 class="text-center display-6 fw-bold">
+            {{ temperature }}°C
+          </h3>
+        </div>
+      </div>
+
+      <div class="col-md-5 offset-md-1">
+        <div class="card shadow-sm p-4 h-100">
+          <h3 class="fw-semibold mb-4">Weather Details</h3>
+          <div class="fs-5 mb-3 d-flex align-items-center">
+            <i class="bi bi-droplet me-2 fs-4 text-primary"></i>
+            <span class="me-1 fw-bold">Humidity:</span>
+            <span>{{ humidity }}%</span>
+          </div>
+          <div class="fs-5 mb-3 d-flex align-items-center">
+            <i class="bi bi-wind me-2 fs-4 text-info"></i>
+            <span class="me-1 fw-bold">Wind Speed:</span>
+            <span>{{ windSpeed }} km/h</span>
+          </div>
+          <div class="fs-5 mb-3 d-flex align-items-center">
+            <i class="bi bi-thermometer-half me-2 fs-4 text-danger"></i>
+            <span class="me-1 fw-bold">Feels Like:</span>
+            <span>{{ feelsLike }}°C</span>
+          </div>
+          <div class="fs-5 mb-3 d-flex align-items-center">
+            <i class="bi bi-cloud-sun me-2 fs-4 text-warning"></i>
+            <span class="me-1 fw-bold">Conditions:</span>
+            <span>{{ weatherDescription }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
